@@ -35,16 +35,6 @@ args = ARGV.getopts(nil, 'in:', 'sheets:').transform_keys!(&:to_sym).map do |k, 
   ]
 end.to_h
 
-wb = Roo::Excelx.new(args[:in])
-# puts wb.sheets.join(',')
-
-# binding.irb
-
-wb.sheets.each do |sh|
-  begin
-    output_csv(wb.sheet(sh), sh) if args[:sheets].include?(sh) || args[:sheets].include?('--')
-  rescue => e
-    binding.irb
-    raise e
-  end
+(wb = Roo::Excelx.new(args[:in])).sheets.each do |sh|
+  output_csv(wb.sheet(sh), sh) if args[:sheets].include?(sh) || args[:sheets].include?('--')
 end
