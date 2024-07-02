@@ -25,7 +25,7 @@ def output_csv(sheet, sheet_name)
   end
 end
 
-args = ARGV.getopts(nil, 'in:', 'sheets:').transform_keys!(&:to_sym).map do |k, v|
+args = ARGV.getopts(nil, 'in:', 'sheets:--').transform_keys!(&:to_sym).map do |k, v|
   [
     k,
     {
